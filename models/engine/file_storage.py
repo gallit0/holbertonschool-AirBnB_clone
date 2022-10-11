@@ -24,11 +24,8 @@ class FileStorage:
 
     def save(self):
         """Serializes"""
-        try:
-            with open(FileStorage.__file_path, 'w') as f:
-                f.write(json.dumps(FileStorage.__objects))
-        except:
-            pass
+        with open(FileStorage.__file_path, 'w') as f:
+            f.write(json.dumps(FileStorage.__objects, default=str))
 
     def reload(self):
         """Deserializes"""

@@ -48,5 +48,8 @@ class BaseModel:
             d['created_at'] = self.created_at.isoformat()
         except:
             d['created_at'] = self.created_at
-        d['updated_at'] = self.updated_at.isoformat()
+        try:
+            d['updated_at'] = self.updated_at.isoformat()
+        except:
+            d['updated_at'] = self.updated_at
         return d
