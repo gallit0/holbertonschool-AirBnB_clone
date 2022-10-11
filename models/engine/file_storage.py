@@ -30,9 +30,8 @@ class FileStorage:
     def reload(self):
         """Deserializes"""
         try:
-            with open(FileStorage.__file_path, 'r') as f:
+            with open(self.__file_path, 'r') as f:
                 d = json.load(f)
-                FileStorage.__objects = d
                 for key, value in d.items:
                     self.new(eval(value['__class__'])(**value))
         except:
