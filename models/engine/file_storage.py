@@ -5,7 +5,7 @@
 import json
 
 
-
+from models.base_model import BaseModel
 
 
 class FileStorage:
@@ -24,17 +24,17 @@ class FileStorage:
 
     def save(self):
         """Serializes"""
+        d = {}
+        for i in self.__objects:
+            d[i] = self.__objects[i]
         with open(FileStorage.__file_path, 'w') as f:
-            f.write(json.dumps(FileStorage.__objects, default=str))
+            f.write(json.dumps(d, default=str))
 
     def reload(self):
         """Deserializes"""
         try:
             with open(FileStorage.__file_path, 'r', encoding='utf-8') as f:
-                d = json.loads(f.read())
-                name = ''
-                from models import BaseModel
-                for i in d:
-                    BaseModel(d[i])
+                for i, j in json.load(f).items():
+                    FileStorage.__objects[i] = BaseModel(**j)
         except:
             pass
