@@ -22,7 +22,7 @@ class BaseModel:
 
     def save(self):
         """Saves update time"""
-        self.updated_at = (datetime.now()).isoformat()
+        self.updated_at = datetime.now()
 
     def to_dict(self):
         """To dicitonary function"""
