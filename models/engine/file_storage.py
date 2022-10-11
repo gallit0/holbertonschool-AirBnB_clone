@@ -34,6 +34,7 @@ class FileStorage:
         """Deserializes"""
         try:
             with open(FileStorage.__file_path, 'r') as f:
-                FileStorage.__objects = f.read()
+                d = json.load(f)
+                FileStorage.__objects = d
         except:
             pass
