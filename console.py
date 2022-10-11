@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""Cmd module to develop shell"""
+
 import cmd
 
 
