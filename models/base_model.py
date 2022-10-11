@@ -8,6 +8,9 @@ import uuid
 from datetime import *
 
 
+from models import storage
+
+
 class BaseModel:
     """Base Model class"""
 
@@ -22,10 +25,11 @@ class BaseModel:
                 if i == 'updated_at':
                     t = datetime.strptime(kwargs[i], '%Y-%m-%dT%H:%M:%S.%f')
                     self.updated_at = t
-            return
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = self.created_at
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = self.created_at
+        storage.new(self)
 
     def __str__(self):
         """Return string of instance"""
@@ -33,6 +37,7 @@ class BaseModel:
 
     def save(self):
         """Saves update time"""
+        storage.save()
         self.updated_at = datetime.now()
 
     def to_dict(self):
