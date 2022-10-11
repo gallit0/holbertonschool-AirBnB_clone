@@ -5,9 +5,6 @@
 import json
 
 
-import models
-
-
 class FileStorage:
     """File Storage class"""
     __file_path = 'file.json'
@@ -32,6 +29,5 @@ class FileStorage:
         try:
             with open(FileStorage.__file_path, 'r') as f:
                 d = json.load(f)
-                FileStorage.__objects = d
         except:
             pass
