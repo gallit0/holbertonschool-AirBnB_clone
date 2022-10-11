@@ -5,6 +5,9 @@
 import json
 
 
+
+
+
 class FileStorage:
     """File Storage class"""
     __file_path = 'file.json'
@@ -27,7 +30,11 @@ class FileStorage:
     def reload(self):
         """Deserializes"""
         try:
-            with open(FileStorage.__file_path, 'r') as f:
-                d = json.load(f)
+            with open(FileStorage.__file_path, 'r', encoding='utf-8') as f:
+                d = json.loads(f.read())
+                name = ''
+                from models import BaseModel
+                for i in d:
+                    BaseModel(d[i])
         except:
             pass

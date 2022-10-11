@@ -42,14 +42,8 @@ class BaseModel:
 
     def to_dict(self):
         """To dicitonary function"""
-        d = self.__dict__
+        d ={key: value for key, value in self.__dict__.items()} 
         d['__class__'] = self.__class__.__name__
-        try:
-            d['created_at'] = self.created_at.isoformat()
-        except:
-            d['created_at'] = self.created_at
-        try:
-            d['updated_at'] = self.updated_at.isoformat()
-        except:
-            d['updated_at'] = self.updated_at
+        d['created_at'] = self.created_at.isoformat()
+        d['updated_at'] = self.updated_at.isoformat()
         return d
