@@ -20,13 +20,13 @@ class FileStorage:
     def new(self, obj):
         """Sets in __objects"""
         name = obj.__class__.__name__ + '.' + obj.id
-        FileStorage.__objects[name] = obj.to_dict()
+        FileStorage.__objects[name] = obj
 
     def save(self):
         """Serializes"""
         d = {}
         for i in self.__objects:
-            d[i] = self.__objects[i]
+            d[i] = self.__objects[i].to_dict()
         with open(FileStorage.__file_path, 'w') as f:
             f.write(json.dumps(d, default=str))
 

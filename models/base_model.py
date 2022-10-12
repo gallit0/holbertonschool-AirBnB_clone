@@ -44,6 +44,6 @@ class BaseModel:
         """To dicitonary function"""
         d ={key: value for key, value in self.__dict__.items()} 
         d['__class__'] = self.__class__.__name__
-        d['created_at'] = self.created_at.isoformat()
-        d['updated_at'] = self.updated_at.isoformat()
+        d['created_at'] = self.created_at.isoformat("T")
+        d['updated_at'] = self.updated_at.isoformat("T")
         return d
