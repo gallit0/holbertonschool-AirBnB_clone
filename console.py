@@ -90,9 +90,9 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, args):
         """Show all"""
         line = args.split(' ')
+        arr = []
+        a = models.storage.all()
         if len(line) < 1 or line[0] == '':
-            a = models.storage.all()
-            arr = []
             for i in a:
                 arr.append(str(a[i]))
             print(arr)
@@ -100,7 +100,12 @@ class HBNBCommand(cmd.Cmd):
         if line[0] not in self.classes:
             print('** class doesn\'t exist **')
             return
-        
+        for i in a:
+            b = i.split('.') 
+            if b[0] == line[0]:
+                arr.append(str(a[i]))
+        print(arr)
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
