@@ -122,7 +122,7 @@ class HBNBCommand(cmd.Cmd):
             print("** attribute name missing **")
             return
         if len(line) < 4:
-            print("* value missing **")
+            print("** value missing **")
             return
         a = models.storage.all()
         for i in a:
