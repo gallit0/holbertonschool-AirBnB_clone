@@ -123,9 +123,16 @@ class HBNBCommand(cmd.Cmd):
             return
         if len(line) < 4:
             print("* value missing **")
-            return 
+            return
         a = models.storage.all()
-        d = a[line[0] + '.' + line[1]]
+        for i in a:
+            b = i.split('.')
+            if b[1] == line[1]:
+                d = a[line[0] + '.' + line[1]]
+                break
+        else:
+            print('** no instance found **')
+            return
         d.__dict__[line[2]] = line[3]
         models.storage.save()
         
