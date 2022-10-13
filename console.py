@@ -32,6 +32,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             print('** class doesn\'t exist **')
             return
+        models.storage.save()
         print(obj.id)
  
     def do_show(self, args):
@@ -50,13 +51,22 @@ class HBNBCommand(cmd.Cmd):
             return
         try:
             d = a[line[0] + '.' + line[1]]
-        except Exception as e:
-            print('** no instance found **')
-            return
-        if d.__class__.__name__ != line[0]:
+            if d.__class__.__name__ != line[0]:
+                raise Exception
+        except Exception:
             print('** no instance found **')
             return
         print(d.__dict__)
+
+
+    def do_destroy(self, args):
+        """Destroy command"""
+        line = args.split(' ')
+        if len(line) < 1:
+            print('** class name missing **')
+            return
+        
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
