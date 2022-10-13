@@ -4,6 +4,9 @@
 import cmd
 
 
+import json
+
+
 import models
 
 
@@ -57,16 +60,31 @@ class HBNBCommand(cmd.Cmd):
                 print(a[i])
                 return
         print("** no instance found **")
+
+
     def do_destroy(self, args):
         """Destroy command"""
         line = args.split(' ')
         if len(line) < 1:
             print('** class name missing **')
             return
-
-
-
-
+        if len(line) < 2:
+            print('** instance id missing **')
+            return
+        if line[0] not in self.classes:
+            print('** class doesn\'t exist **')
+            return
+        try:
+            a = models.storage.all()
+            key = line[0] + '.' + line[1]
+            a[key]
+        except:
+            print('** no instance found **')
+            return
+        with open('file.json', 'w') as f:
+            del a[key]
+            f.write(json.dumps(a, default=str))
+            models.storage.reload()
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
