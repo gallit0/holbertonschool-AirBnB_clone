@@ -65,7 +65,7 @@ class HBNBCommand(cmd.Cmd):
     def do_destroy(self, args):
         """Destroy command"""
         line = args.split(' ')
-        if len(line) < 1:
+        if len(line) == 1 and line[0] == '':
             print('** class name missing **')
             return
         if len(line) < 2:
