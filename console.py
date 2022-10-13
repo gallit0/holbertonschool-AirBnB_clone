@@ -9,6 +9,9 @@ import models
 
 class HBNBCommand(cmd.Cmd):
 
+
+    classes = ['BaseModel']
+
     prompt = '(hbnb) '
   
     def do_EOF(self, line):
@@ -38,28 +41,22 @@ class HBNBCommand(cmd.Cmd):
     def do_show(self, args):
         """Show command"""
         line = args.split(' ')
-        if len(line) < 1:
+        if len(line) == 1 and var[0] == '':
             print('** class name missing **')
             return
-        if len(line) < 2:
+        if line[0] not in self.classes:
+            print('** class doesn\'t exist **')
+            return
+        if len(line) == 1:
             print('** instance id missing **')
             return
-        if line[0] == 'BaseModel':
-            a = models.storage.all()
-        else:
-            print("** class doesn't exist **")
-            return
-        try:
-            d = a[line[0] + '.' + line[1]]
-            if d.__class__.__name__ != line[0]:
-                raise Exception
-        except Exception:
-            print('** no instance found **')
-            return
-        temp = models.base_model.BaseModel(d)
-        print(temp)
-
-
+        a = models.storage.all()
+        for i in a:
+            b = i.split('.')
+            if b[1] == line[1]:
+                print(a[i])
+                return
+        print("** no instance found **")
     def do_destroy(self, args):
         """Destroy command"""
         line = args.split(' ')
