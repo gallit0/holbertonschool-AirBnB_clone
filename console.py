@@ -125,20 +125,10 @@ class HBNBCommand(cmd.Cmd):
             print("* value missing **")
             return 
         a = models.storage.all()
-        for i in a:
-            b = i.split('.')
-            if b[1] == line[1]:
-                upd = a[i]
-                break
-        else:
-            print('* no instance found **')
-            return
-        upd = upd.to_dict()
-        upd[line[2]] = (line[3].split("\""))[1]
-        a[line[0] + '.' + line[1]] = upd
-        with open('file.json', 'w') as f:
-            f.write(json.dumps(a, default=str))
-            models.storage.reload()
+        d = a[line[0] + '.' + line[1]]
+        d.__dict__[line[2]] = line[3]
+        models.storage.save()
+        
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
