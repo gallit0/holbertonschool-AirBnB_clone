@@ -34,5 +34,26 @@ class HBNBCommand(cmd.Cmd):
             return
         print(obj.id)
  
+    def do_show(self, args):
+        """Show command"""
+        line = args.split(' ')
+        if len(line) < 1:
+            print('** class name missing **')
+            return
+        if len(line) < 2:
+            print('** instance id missing **')
+            return
+        if line[0] == 'BaseModel':
+            a = models.storage.all()
+        else:
+            print("** class doesn't exist **")
+            return
+        try:
+            d = a[line[0] + '.' + line[1]]
+        except Exception as e:
+                print('** no instance found **')
+                return
+        print(d.__dict__)
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
