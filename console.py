@@ -86,5 +86,21 @@ class HBNBCommand(cmd.Cmd):
             f.write(json.dumps(a, default=str))
             models.storage.reload()
 
+
+    def do_all(self, args):
+        """Show all"""
+        line = args.split(' ')
+        if len(line) < 1 or line[0] == '':
+            a = models.storage.all()
+            arr = []
+            for i in a:
+                arr.append(str(a[i]))
+            print(arr)
+            return
+        if line[0] not in self.classes:
+            print('** class doesn\'t exist **')
+            return
+        
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
