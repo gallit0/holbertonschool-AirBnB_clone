@@ -51,8 +51,11 @@ class HBNBCommand(cmd.Cmd):
         try:
             d = a[line[0] + '.' + line[1]]
         except Exception as e:
-                print('** no instance found **')
-                return
+            print('** no instance found **')
+            return
+        if d.__class__.__name__ != line[0]:
+            print('** no instance found **')
+            return
         print(d.__dict__)
 
 if __name__ == '__main__':
