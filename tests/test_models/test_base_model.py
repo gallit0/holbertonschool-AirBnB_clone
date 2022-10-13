@@ -8,4 +8,5 @@ class BaseModelClass(unittest.TestCase):
     def test_save_empty(self):
         att = BaseModel()
         result = att.id
-        self.assertEqual(result, result)
+        res2 = result
+        self.assertEqual(result, res2)
