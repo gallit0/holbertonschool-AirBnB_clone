@@ -56,7 +56,8 @@ class HBNBCommand(cmd.Cmd):
         except Exception:
             print('** no instance found **')
             return
-        print(d.__dict__)
+        temp = models.base_model.BaseModel(d)
+        print(temp)
 
 
     def do_destroy(self, args):
@@ -65,7 +66,9 @@ class HBNBCommand(cmd.Cmd):
         if len(line) < 1:
             print('** class name missing **')
             return
-        
+
+
+
 
 
 if __name__ == '__main__':
