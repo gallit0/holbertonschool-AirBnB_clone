@@ -37,12 +37,12 @@ class BaseModel:
 
     def save(self):
         """Saves update time"""
-        models.storage.save()
         self.updated_at = datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         """To dicitonary function"""
-        d ={key: value for key, value in self.__dict__.items()} 
+        d = {key: value for key, value in self.__dict__.items()} 
         d['__class__'] = self.__class__.__name__
         d['created_at'] = self.created_at.isoformat("T")
         d['updated_at'] = self.updated_at.isoformat("T")
