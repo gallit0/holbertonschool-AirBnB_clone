@@ -3,6 +3,7 @@
 
 import cmd
 
+from models.user import User
 
 import json
 
