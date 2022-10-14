@@ -40,10 +40,19 @@ def create_aux(a):
     if a == 'Review':
         return Review()
 
+
 class HBNBCommand(cmd.Cmd):
 
 
-    classes = ['BaseModel', 'User', 'State', 'City', 'Amenity', 'Place', 'Review']
+    classes = [
+        'BaseModel',
+        'User',
+        'State',
+        'City',
+        'Amenity',
+        'Place',
+        'Review'
+    ]
 
     prompt = '(hbnb) '
   
@@ -57,23 +66,6 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         """Do nothing after empty line + enter"""
         pass
-
-
-    def create_aux(a):
-        """Auxiliar functin for create"""
-        if a == 'BaseModel':
-            return models.base_model.BaeModel()
-        if a == 'User':
-            return User()
-        if a == 'State':
-            return models.state.State()
-        if a == 'City':
-            return models.amenity.Amenity()
-        if a == 'Place':
-            return models.place.Place()
-        if a == 'Review':
-            return models.review.Review()
-
 
     def do_create(self, args):
         """Create command"""
