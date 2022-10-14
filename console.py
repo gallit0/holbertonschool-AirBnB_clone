@@ -3,7 +3,9 @@
 
 import cmd
 
+
 from models.user import User
+
 
 import json
 
@@ -14,7 +16,7 @@ import models
 class HBNBCommand(cmd.Cmd):
 
 
-    classes = ['BaseModel']
+    classes = ['BaseModel', 'User']
 
     prompt = '(hbnb) '
   
@@ -36,6 +38,8 @@ class HBNBCommand(cmd.Cmd):
             return
         if args == 'BaseModel':
             obj = models.base_model.BaseModel()
+        elif args == 'User':
+            obj = User()
         else:
             print('** class doesn\'t exist **')
             return
