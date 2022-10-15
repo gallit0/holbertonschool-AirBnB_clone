@@ -10,6 +10,9 @@ from models.user import User
 from models.state import State
 
 
+from models.city import City
+
+
 from models.amenity import Amenity
 
 
@@ -34,11 +37,13 @@ def create_aux(a):
     if a == 'State':
         return State()
     if a == 'City':
-        return Amenity()
+        return City()
     if a == 'Place':
         return Place()
     if a == 'Review':
         return Review()
+    if a == 'Amenity':
+        return Amenity()
 
 
 class HBNBCommand(cmd.Cmd):
@@ -130,7 +135,6 @@ class HBNBCommand(cmd.Cmd):
         """Show all"""
         line = args.split(' ')
         arr = []
-        models.storage.reload()
         a = models.storage.all()
         if len(line) < 1 or line[0] == '':
             for i in a:
