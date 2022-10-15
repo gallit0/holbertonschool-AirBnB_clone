@@ -95,7 +95,7 @@ class HBNBCommand(cmd.Cmd):
         a = models.storage.all()
         for i in a:
             b = i.split('.')
-            if b[1] == line[1]:
+            if b[1] == line[1] and b[0] == line[0]:
                 print(a[i])
                 return
         print("** no instance found **")
@@ -123,7 +123,7 @@ class HBNBCommand(cmd.Cmd):
         with open('file.json', 'w') as f:
             del a[key]
             f.write(json.dumps(a, default=str))
-            models.storage.reload()
+        models.storage.reload()
 
 
     def do_all(self, args):
