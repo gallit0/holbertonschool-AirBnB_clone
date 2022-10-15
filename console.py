@@ -130,6 +130,7 @@ class HBNBCommand(cmd.Cmd):
         """Show all"""
         line = args.split(' ')
         arr = []
+        models.storage.reload()
         a = models.storage.all()
         if len(line) < 1 or line[0] == '':
             for i in a:
