@@ -15,6 +15,7 @@ class FileStorageClass(unittest.TestCase):
         a = f._FileStorage__file_path
         self.assertEqual(a, "file.json")
 
-    def test_objects(self):
+    def test_objects_new(self):
         obj = FileStorage()
         self.assertEqual(type(obj._FileStorage__objects), dict)
+        self.assertEqual(obj.all(), {})
