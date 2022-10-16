@@ -16,6 +16,11 @@ class BaseModelClass(unittest.TestCase):
 
     def test_to_dict(self):
         inst = BaseModel()
+        d = {key: value for key, value in inst.__dict__.items()}
+        d['__class__'] = inst.__class__.__name__
+        d['created_at'] = inst.created_at.isoformat("T")
+        d['updated_at'] = inst.updated_at.isoformat("T")
+        self.assertEqual(d, inst.to_dict())
 
     def test_string(self):
         inst = BaseModel()
