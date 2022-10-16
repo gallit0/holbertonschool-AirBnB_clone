@@ -16,8 +16,9 @@ class BaseModelClass(unittest.TestCase):
 
     def test_to_dict(self):
         inst = BaseModel()
-        d = inst.to_dict()
-        self.assertEqual(inst.to_dict(), dict(d))
 
     def test_string(self):
-        self.assertEqual(str, type(str(BaseModel)))
+        inst = BaseModel()
+        self.assertEqual(str, type(str(inst)))
+        s = f'[{inst.__class__.__name__}] ({inst.id}) {inst.__dict__}'
+        self.assertEqual(s, str(inst))
