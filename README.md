@@ -55,6 +55,7 @@ When we create an object, will be printed the object's id
     'updated_at': datetime.datetime(2022, 10, 16, 17, 25, 45, 369075)}"]
 
 **Update an object**
+
 Usage: 
 
     -   `update <class name> <id> <attribute name> "<attribute value>"`
