@@ -19,4 +19,20 @@ To execute:
 
     ./console.py
 
+## How to use
+First we have to create an object, for example:
 
+    (hbnb) create BaseModel
+    d69473b5-d3c6-41ec-abaf-5c13230c3828
+When we create an object, will be printed the object's id
+
+Then we can show the object created:
+
+    (hbnb) show BaseModel d69473b5-d3c6-41ec-abaf-5c13230c3828
+    [BaseModel] (d69473b5-d3c6-41ec-abaf-5c13230c3828) {'id': 'd69473b5-d3c6-41ec-abaf-5c13230c3828',
+    'created_at': datetime.datetime(2022, 10, 16, 17, 14, 42, 725158),
+    'updated_at': datetime.datetime(2022, 10, 16, 17, 14, 42, 725158)}
+
+Destroy the object:
+
+    (hbnb) destroy BaseModel d69473b5-d3c6-41ec-abaf-5c13230c3828
