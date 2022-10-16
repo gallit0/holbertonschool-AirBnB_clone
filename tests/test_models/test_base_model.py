@@ -19,4 +19,6 @@ class BaseModelClass(unittest.TestCase):
         
 
     def test_string(self):
-        self.assertEqual(str, type(str(BaseModel)))
+        i = BaseModel()
+        s = i.__str__()
+        self.assertEqual(i.__str__(), s)
