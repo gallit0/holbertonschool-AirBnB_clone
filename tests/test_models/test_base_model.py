@@ -13,11 +13,11 @@ class BaseModelClass(unittest.TestCase):
         inst.save()
         self.assertEqual(cr, inst.created_at)
         self.assertNotEqual(up, inst.updated_at)
-""""
+
     def test_to_dict(self):
         inst = BaseModel()
-        
+        d = inst.to_dict()
+        self.assertEqual(inst.to_dict(), dict(d))
 
     def test_string(self):
-        i = BaseModel()
-        self.assertEqual(i.__str__(), s)"""
+        self.assertEqual(str, type(str(BaseModel)))
