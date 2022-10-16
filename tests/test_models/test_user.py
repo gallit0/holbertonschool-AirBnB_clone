@@ -27,3 +27,6 @@ class BaseModelClass(unittest.TestCase):
     def test_userEmail(self):
         inst = User()
         self.assertEqual(inst.email, '')
+        self.assertEqual(inst.password, '')
+        self.assertEqual(inst.first_name, '')
+        self.assertEqual(inst.last_name, '')
