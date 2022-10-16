@@ -56,8 +56,6 @@ When we create an object, will be printed the object's id
 
 **Update an object**
 
-Usage: 
-
     -   `update <class name> <id> <attribute name> "<attribute value>"`
 
     (hbnb) update BaseModel 0135da68-c890-4c15-914a-93b76227a136 email "aibnb@mail.com"
