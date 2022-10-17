@@ -47,8 +47,6 @@ def create_aux(a):
 
 
 class HBNBCommand(cmd.Cmd):
-
-
     classes = [
         'BaseModel',
         'User',
@@ -60,14 +58,14 @@ class HBNBCommand(cmd.Cmd):
     ]
 
     prompt = '(hbnb) '
-  
+
     def do_EOF(self, line):
         return True
 
     def do_quit(self, args):
         """Quit command to exit the program"""
         raise SystemExit
-    
+
     def emptyline(self):
         """Do nothing after empty line + enter"""
         pass
@@ -84,7 +82,7 @@ class HBNBCommand(cmd.Cmd):
             return
         models.storage.save()
         print(obj.id)
- 
+
     def do_show(self, args):
         """Show command"""
         line = args.split(' ')
@@ -104,7 +102,6 @@ class HBNBCommand(cmd.Cmd):
                 print(a[i])
                 return
         print("** no instance found **")
-
 
     def do_destroy(self, args):
         """Destroy command"""
@@ -130,7 +127,6 @@ class HBNBCommand(cmd.Cmd):
             f.write(json.dumps(a, default=str))
         models.storage.reload()
 
-
     def do_all(self, args):
         """Show all"""
         line = args.split(' ')
@@ -145,7 +141,7 @@ class HBNBCommand(cmd.Cmd):
             print('** class doesn\'t exist **')
             return
         for i in a:
-            b = i.split('.') 
+            b = i.split('.')
             if b[0] == line[0]:
                 arr.append(str(a[i]))
         print(arr)
@@ -179,7 +175,7 @@ class HBNBCommand(cmd.Cmd):
             return
         d.__dict__[line[2]] = line[3]
         models.storage.save()
-        
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
