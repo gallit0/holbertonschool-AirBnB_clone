@@ -3,6 +3,7 @@
 from lib2to3.pytree import Base
 import unittest
 from models.base_model import BaseModel
+import os
 
 class BaseModelClass(unittest.TestCase):
     """ Test basemodel """
@@ -27,3 +28,11 @@ class BaseModelClass(unittest.TestCase):
         self.assertEqual(str, type(str(inst)))
         s = f'[{inst.__class__.__name__}] ({inst.id}) {inst.__dict__}'
         self.assertEqual(s, str(inst))
+    
+    def test_save(self):
+        b = BaseModel()
+        try:
+            os.remove('file.json')
+        except Exception:
+            pass
+        self.assertTrue(os.path.exists('file.json'))
