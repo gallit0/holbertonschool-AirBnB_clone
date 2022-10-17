@@ -35,4 +35,5 @@ class BaseModelClass(unittest.TestCase):
             os.remove('file.json')
         except Exception:
             pass
+        b.save()
         self.assertTrue(os.path.exists('file.json'))
