@@ -3,6 +3,7 @@
 import unittest
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
+import json
 
 class FileStorageClass(unittest.TestCase):
     """ Test File Storage """
@@ -31,9 +32,13 @@ class FileStorageClass(unittest.TestCase):
         self.assertEqual(f._FileStorage__objects[name], obj)
         
     def test_save(self):
-		with open(FileStorage._FileStorage__file_path, 'r') as f:
+        f = FileStorage()
+        b = BaseModel()
+        f.new(b)
+        with open(f._FileStorage__file_path, 'r') as f:
             self.assertEqual(dict, type(json.load(f)))
 
     def test_reload(self):
-		with self.assertRaises(TypeError):
+        with self.assertRaises(TypeError):
+            storage = FileStorage()
             storage.reload(None)
