@@ -26,8 +26,9 @@ class FileStorageClass(unittest.TestCase):
     def test_new(self):
         f = FileStorage()
         obj = BaseModel()
-        self.assertEqual(f.new(obj), None)
-        self.assertEqual(f._FileStorage__objects, f.all())
+        name = obj.__class__.__name__ + '.' + obj.id
+        f.new(obj)
+        self.assertEqual(f._FileStorage__objects[name], obj)
         
     def test_save(self):
         f = FileStorage()
