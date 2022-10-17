@@ -33,7 +33,7 @@ class FileStorageClass(unittest.TestCase):
         
     def test_save(self):
         with self.assertRaises(FileNotFoundError):
-            with open(f._FileStorage__file_path, 'r') as f:
+            with open(FileStorage._FileStorage__file_path, 'r') as f:
                 self.assertEqual(dict, type(json.load(f)))
 
     def test_reload(self):
