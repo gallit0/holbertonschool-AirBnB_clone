@@ -31,8 +31,8 @@ class FileStorageClass(unittest.TestCase):
         self.assertEqual(f._FileStorage__objects[name], obj)
         
     def test_save(self):
-        f = FileStorage()
-        self.assertEqual(f.save(), None)
+		with open(FileStorage._FileStorage__file_path, 'r') as f:
+            self.assertEqual(dict, type(json.load(f)))
 
     def test_reload(self):
 		with self.assertRaises(TypeError):
