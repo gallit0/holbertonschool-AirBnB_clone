@@ -23,6 +23,7 @@ class FileStorageClass(unittest.TestCase):
 
     def test_all(self):
         obj = FileStorage()
+        obj.all().clear()
         self.assertEqual(obj.all(), {})
 
     def test_new(self):
@@ -37,5 +38,5 @@ class FileStorageClass(unittest.TestCase):
             storage.save(None)
 
     def test_reload(self):
-        st = FileStorage()
-        self.assertRaises(FileNotFoundError, st.reload())
+        with self.assertRaises(TypeError):
+            storage.save(None)
