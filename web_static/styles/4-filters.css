@@ -1,0 +1,29 @@
+:root{
+    --container-section-filters-height: 70px;
+    --section-filters-button-height: 48px;
+}
+
+.container section.filters{
+    background-color: #fff;
+    height: var(--container-section-filters-height);
+    width: 100%;
+    border: 1px solid #DDD;
+    border-radius: 4px;
+}
+
+section.filters button{
+    font-size: 18px;
+    background: #FF5A5F;
+    color: #fff;
+    height: var(--section-filters-button-height);
+    width: 20%;
+    border: 0;
+    border-radius: 4px;
+    margin-right: 30px;
+    margin-top: calc((var(--container-section-filters-height) - var(--section-filters-button-height)) / 2);
+    float: right;
+}
+
+section.filters button:hover{
+    opacity: 90%;
+}
